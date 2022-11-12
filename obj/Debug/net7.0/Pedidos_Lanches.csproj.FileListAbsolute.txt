@@ -1,0 +1,15 @@
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\bin\Debug\net7.0\Pedidos_Lanches.exe
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\bin\Debug\net7.0\Pedidos_Lanches.deps.json
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\bin\Debug\net7.0\Pedidos_Lanches.runtimeconfig.json
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\bin\Debug\net7.0\Pedidos_Lanches.dll
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\bin\Debug\net7.0\Pedidos_Lanches.pdb
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\obj\Debug\net7.0\Pedidos_Lanches.csproj.AssemblyReference.cache
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\obj\Debug\net7.0\Pedidos_Lanches.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\obj\Debug\net7.0\Pedidos_Lanches.AssemblyInfoInputs.cache
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\obj\Debug\net7.0\Pedidos_Lanches.AssemblyInfo.cs
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\obj\Debug\net7.0\Pedidos_Lanches.csproj.CoreCompileInputs.cache
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\obj\Debug\net7.0\Pedidos_Lanches.dll
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\obj\Debug\net7.0\refint\Pedidos_Lanches.dll
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\obj\Debug\net7.0\Pedidos_Lanches.pdb
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\obj\Debug\net7.0\Pedidos_Lanches.genruntimeconfig.cache
+C:\Users\pablo\Desktop\Projetos\Pedidos_Lanches\obj\Debug\net7.0\ref\Pedidos_Lanches.dll

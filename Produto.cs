@@ -6,8 +6,6 @@ class Produto
     public string Nome { get; set; } = string.Empty;
     public decimal Valor { get; set; }
     public int Quantidade { get; set; }
-    private static int nextId = 1;
-
     public Produto()
     {
     }
@@ -27,14 +25,15 @@ class Produto
     }
     public static void Add(Produto produto)
     {
-        produto.Id = nextId++;
+        produto.Id = Program.Produtos.Count + 1;
         Program.Produtos.Add(produto);
     }
-    public static void Remove(int id)
+    public static bool Remove(int id)
     {
         var index = Program.Produtos.FindIndex(p => p.Id == id);
-        if (index == -1) return;
+        if (index == -1) return false;
         else Program.Produtos.RemoveAt(index);
+        return true;
     }
     public static void Update(Produto produto)
     {

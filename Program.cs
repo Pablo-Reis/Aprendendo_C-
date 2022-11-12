@@ -5,7 +5,7 @@ class Program
 {
     static List<Ordem> Ordens = new();
     public static List<Produto> Produtos = new();
-    enum OptionsMenu { Adicionar = 1, Listar, Sair }
+    enum OptionsMenu { Adicionar_Pedido = 1, Listar_Pedidos, Cadastrar_Produtos, Listar_Produtos, Remover_Produto, Sair }
     static void Main()
     {
         bool decidiuSair = false;
@@ -13,16 +13,25 @@ class Program
         {
             Console.Clear();
             System.Console.WriteLine("Bem vindo ao gerenciador de pedidos!Selecione a opção que deseja para prosseguirmos:");
-            System.Console.WriteLine("1 - Adicionar novo pedido\n2 - Listar pedidos\n3 - Sair do programa");
+            System.Console.WriteLine("1 - Adicionar novo pedido\n2 - Listar pedidos\n3 - Cadastrar produto\n4 - Listar Produtos\n5 - Remover produto\n6 - Sair do programa");
             if (int.TryParse(Console.ReadLine(), out int opcaoSelecionada))
             {
                 switch ((OptionsMenu)opcaoSelecionada)
                 {
-                    case OptionsMenu.Adicionar:
+                    case OptionsMenu.Adicionar_Pedido:
                         AdicionarPedido();
                         break;
-                    case OptionsMenu.Listar:
+                    case OptionsMenu.Listar_Pedidos:
                         ListarPedidos();
+                        break;
+                    case OptionsMenu.Cadastrar_Produtos:
+                        AdicionarProduto();
+                        break;
+                    case OptionsMenu.Listar_Produtos:
+                        ListarProdutos();
+                        break;
+                    case OptionsMenu.Remover_Produto:
+                        RemoverProduto();
                         break;
                     case OptionsMenu.Sair:
                         Environment.Exit(0);
@@ -37,7 +46,6 @@ class Program
     }
     static void AdicionarPedido()
     {
-        AdicionarProduto();
         try
         {
             bool finalizarPedido = false;
@@ -66,8 +74,7 @@ class Program
                         if (int.TryParse(Console.ReadLine(), out int quantidadeProduto))
                         {
                             produto.Quantidade = quantidadeProduto;
-                            Produto newProduto = new(produto.Nome, produto.Valor, produto.Quantidade);
-                            Itens.Add(newProduto);
+                            Itens.Add(new Produto(produto.Nome, produto.Valor, quantidadeProduto));
                         }
                         else
                         {
@@ -125,14 +132,54 @@ class Program
         }
         return total;
     }
-
     static void AdicionarProduto()
     {
-        Produto bola = new("Bola", 29.90m);
-        Produto.Add(bola);
-        Produto biscoito = new("Biscoito", 3.99m);
-        Produto.Add(biscoito);
-        Produto refrigerante = new("Refrigerante", 6.99m);
-        Produto.Add(refrigerante);
+        Console.Clear();
+        System.Console.Write("Nome do produto: ");
+        string nomeProduto = Console.ReadLine();
+        System.Console.Write("Valor do produto: R$");
+        if (decimal.TryParse(Console.ReadLine(), out decimal valorProduto))
+        {
+            Produto.Add(new Produto(nomeProduto, valorProduto));
+            System.Console.WriteLine("Produto adicionado com sucesso!");
+            Console.ReadKey();
+        }
+    }
+    static void ListarProdutos()
+    {
+        Console.Clear();
+        if (Produto.GetAll().Count > 0)
+        {
+            foreach (Produto produto in Produto.GetAll())
+            {
+                System.Console.WriteLine($"Produto: {produto.Id}");
+                System.Console.WriteLine($"Nome: {produto.Nome}");
+                System.Console.WriteLine($"Valor: {produto.Valor.ToString("C")}");
+                System.Console.WriteLine("==================================================");
+            }
+        }
+        else
+        {
+            System.Console.WriteLine("Não existem produtos!");
+        }
+        Console.ReadKey();
+    }
+    static void RemoverProduto()
+    {
+        Console.Clear();
+        System.Console.WriteLine("Digite o ID do produto que deseja remover:");
+        if (int.TryParse(Console.ReadLine(), out int IdSelecionado))
+        {
+            if (Produto.Remove(IdSelecionado))
+            {
+                System.Console.WriteLine("Produto removido com sucesso!");
+            }
+            else
+            {
+                System.Console.WriteLine("Produto não encontrado");
+            }
+            Console.ReadKey();
+        }
     }
 }
+

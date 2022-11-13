@@ -19,7 +19,6 @@ class Ordem
 
     public string Cliente { get; set; } = string.Empty;
 
-
     public decimal GetTotal()
     {
         decimal total = 0m;

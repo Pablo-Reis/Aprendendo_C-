@@ -1,5 +1,7 @@
-﻿namespace Pedidos_Lanches;
-
+﻿using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Text.Json;
+namespace Pedidos_Lanches;
 
 class Program
 {
@@ -8,6 +10,7 @@ class Program
     enum OptionsMenu { Adicionar_Pedido = 1, Listar_Pedidos, Cadastrar_Produtos, Listar_Produtos, Remover_Produto, Sair }
     static void Main()
     {
+        Carregar();
         bool decidiuSair = false;
         while (!decidiuSair)
         {
@@ -100,7 +103,8 @@ class Program
                 System.Console.WriteLine("Qual o nome do cliente?");
                 string cliente = Console.ReadLine();
                 Ordem Ordem = new(cliente, Itens);
-                Ordens.Add(Ordem);  //Adicionar pedido na lista de pedidos
+                Ordens.Add(Ordem);
+                Salvar();
                 Console.Clear();
                 Ordem.ExibirNotaPedido();
                 Console.ReadKey();
@@ -141,6 +145,7 @@ class Program
         if (decimal.TryParse(Console.ReadLine(), out decimal valorProduto))
         {
             Produto.Add(new Produto(nomeProduto, valorProduto));
+            Salvar();
             System.Console.WriteLine("Produto adicionado com sucesso!");
             Console.ReadKey();
         }
@@ -173,12 +178,75 @@ class Program
             if (Produto.Remove(IdSelecionado))
             {
                 System.Console.WriteLine("Produto removido com sucesso!");
+                Salvar();
             }
             else
             {
                 System.Console.WriteLine("Produto não encontrado");
             }
             Console.ReadKey();
+        }
+    }
+
+    static void Salvar()
+    {
+        try
+        {
+            string PathProduct = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}{Path.DirectorySeparatorChar}product.txt";
+            string PathOrder = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}{Path.DirectorySeparatorChar}order.txt";
+            string jsonListProdutos = JsonSerializer.Serialize(Produtos);
+            File.WriteAllText(PathProduct, jsonListProdutos);
+            string jsonListOrdens = JsonSerializer.Serialize(Ordens);
+            File.WriteAllText(PathOrder, jsonListOrdens);
+        }
+        catch (Exception e)
+        {
+            System.Console.WriteLine($"Erro conforme mensagem: {e.Message}");
+            Console.ReadKey();
+        }
+
+    }
+    static void Carregar()
+    {
+        string PathProduct = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}{Path.DirectorySeparatorChar}product.txt";
+        string PathOrder = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}{Path.DirectorySeparatorChar}order.txt";
+        try
+        {
+            var data = File.ReadAllText(PathProduct);
+            var dataList = JsonSerializer.Deserialize<List<Produto>>(data);
+            foreach (Produto produto in dataList)
+            {
+                Produto.Add(produto);
+            }
+            if (Produtos is null)
+            {
+                Produtos = new();
+            }
+        }
+        catch (Exception e)
+        {
+            System.Console.WriteLine($"Erro ao carregar produtos: {e.Message}");
+            Console.ReadKey();
+            Produtos = new();
+        }
+        try
+        {
+            var data = File.ReadAllText(PathOrder);
+            var dataList = JsonSerializer.Deserialize<List<Ordem>>(data);
+            foreach (Ordem ordem in dataList)
+            {
+                Ordens.Add(ordem);
+            }
+            if (Ordens is null)
+            {
+                Ordens = new();
+            }
+        }
+        catch (Exception e)
+        {
+            System.Console.WriteLine($"Erro ao carregar pedidos: {e.Message}");
+            Console.ReadKey();
+            Ordens = new();
         }
     }
 }

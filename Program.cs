@@ -76,6 +76,7 @@ class Program
                         System.Console.Write("Quantidade: ");
                         if (int.TryParse(Console.ReadLine(), out int quantidadeProduto))
                         {
+                            if (quantidadeProduto == 0) continue;
                             produto.Quantidade = quantidadeProduto;
                             Itens.Add(new Produto(produto.Nome, produto.Valor, quantidadeProduto));
                         }

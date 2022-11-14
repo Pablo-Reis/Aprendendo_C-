@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pablo\\Desktop\\Projetos\\Pedidos_Lanches\\Pedidos_Lanches.csproj": {}
+    "C:\\Users\\SUPORTE-02-0042\\Desktop\\Programacao\\Gerador_De_Pedidos\\Aprendendo_C-\\Pedidos_Lanches.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pablo\\Desktop\\Projetos\\Pedidos_Lanches\\Pedidos_Lanches.csproj": {
+    "C:\\Users\\SUPORTE-02-0042\\Desktop\\Programacao\\Gerador_De_Pedidos\\Aprendendo_C-\\Pedidos_Lanches.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pablo\\Desktop\\Projetos\\Pedidos_Lanches\\Pedidos_Lanches.csproj",
+        "projectUniqueName": "C:\\Users\\SUPORTE-02-0042\\Desktop\\Programacao\\Gerador_De_Pedidos\\Aprendendo_C-\\Pedidos_Lanches.csproj",
         "projectName": "Pedidos_Lanches",
-        "projectPath": "C:\\Users\\pablo\\Desktop\\Projetos\\Pedidos_Lanches\\Pedidos_Lanches.csproj",
-        "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pablo\\Desktop\\Projetos\\Pedidos_Lanches\\obj\\",
+        "projectPath": "C:\\Users\\SUPORTE-02-0042\\Desktop\\Programacao\\Gerador_De_Pedidos\\Aprendendo_C-\\Pedidos_Lanches.csproj",
+        "packagesPath": "C:\\Users\\SUPORTE-02-0042\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\SUPORTE-02-0042\\Desktop\\Programacao\\Gerador_De_Pedidos\\Aprendendo_C-\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\SUPORTE-02-0042\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

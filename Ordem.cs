@@ -63,7 +63,7 @@ class Ordem
         System.Console.WriteLine("Produtos:");
         foreach (Produto item in Itens)
         {
-            System.Console.WriteLine($"Item: {item.Nome} - Quantidade - {item.Quantidade} - Valor - {item.Valor.ToString("C")}");
+            System.Console.WriteLine($"Item: {item.Nome.PadRight(40)} | Quantidade - {item.Quantidade.ToString().PadRight(3)}| Valor - {item.Valor.ToString("C").PadLeft(10)}|");
         }
         System.Console.WriteLine($"Total -------- {this.GetTotal().ToString("C")}");
     }

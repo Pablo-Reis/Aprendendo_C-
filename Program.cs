@@ -15,7 +15,7 @@ class Program
         while (!decidiuSair)
         {
             Console.Clear();
-            System.Console.WriteLine("Bem vindo ao gerenciador de pedidos!Selecione a opção que deseja para prosseguirmos:");
+            System.Console.WriteLine("Bem vindo ao gerenciador de pedidos!\nSelecione a opção que deseja para prosseguirmos:");
             System.Console.WriteLine("1 - Adicionar novo pedido\n2 - Listar pedidos\n3 - Cadastrar produto\n4 - Listar Produtos\n5 - Remover produto\n6 - Sair do programa");
             if (int.TryParse(Console.ReadLine(), out int opcaoSelecionada))
             {
@@ -120,11 +120,16 @@ class Program
     static void ListarPedidos()
     {
         Console.Clear();
-        foreach (var ordem in Ordens)
+        if (Ordens.Count > 0)
         {
-            ordem.ListarPedidos();
-            System.Console.WriteLine("====================================");
+            foreach (var ordem in Ordens)
+            {
+                ordem.ListarPedidos();
+                System.Console.WriteLine("====================================");
+            }
         }
+        else System.Console.WriteLine("Não há pedidos registrados!");
+
         Console.ReadLine();
     }
 
@@ -211,6 +216,8 @@ class Program
     {
         string PathProduct = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}{Path.DirectorySeparatorChar}product.txt";
         string PathOrder = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}{Path.DirectorySeparatorChar}order.txt";
+        if (!(File.Exists(PathProduct))) using (File.Create(PathProduct)) { }
+        else if (!(File.Exists(PathOrder))) using (File.Create(PathOrder)) { }
         try
         {
             var data = File.ReadAllText(PathProduct);
@@ -226,8 +233,6 @@ class Program
         }
         catch (Exception e)
         {
-            System.Console.WriteLine($"Erro ao carregar produtos: {e.Message}");
-            Console.ReadKey();
             Produtos = new();
         }
         try
@@ -245,8 +250,6 @@ class Program
         }
         catch (Exception e)
         {
-            System.Console.WriteLine($"Erro ao carregar pedidos: {e.Message}");
-            Console.ReadKey();
             Ordens = new();
         }
     }
